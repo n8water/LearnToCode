@@ -26,3 +26,17 @@ C:\Users\sabrina.felder\source\repos\n8water\LearningLabCSharp\Exercism.io\acron
 C:\Users\sabrina.felder\source\repos\n8water\LearningLabCSharp\Exercism.io\acronym\obj\Debug\netcoreapp2.1\Acronym.AssemblyInfo.cs
 C:\Users\sabrina.felder\source\repos\n8water\LearningLabCSharp\Exercism.io\acronym\obj\Debug\netcoreapp2.1\Acronym.dll
 C:\Users\sabrina.felder\source\repos\n8water\LearningLabCSharp\Exercism.io\acronym\obj\Debug\netcoreapp2.1\Acronym.pdb
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\Acronym.deps.json
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\Acronym.runtimeconfig.json
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\Acronym.runtimeconfig.dev.json
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\Acronym.dll
+D:\Programmieren\LearnToCode\csharp\acronym\bin\Debug\netcoreapp2.1\Acronym.pdb
+D:\Programmieren\LearnToCode\csharp\acronym\obj\Debug\netcoreapp2.1\Acronym.csprojAssemblyReference.cache
+D:\Programmieren\LearnToCode\csharp\acronym\obj\Debug\netcoreapp2.1\Acronym.csproj.CoreCompileInputs.cache
+D:\Programmieren\LearnToCode\csharp\acronym\obj\Debug\netcoreapp2.1\Acronym.AssemblyInfoInputs.cache
+D:\Programmieren\LearnToCode\csharp\acronym\obj\Debug\netcoreapp2.1\Acronym.AssemblyInfo.cs
+D:\Programmieren\LearnToCode\csharp\acronym\obj\Debug\netcoreapp2.1\Acronym.dll
+D:\Programmieren\LearnToCode\csharp\acronym\obj\Debug\netcoreapp2.1\Acronym.pdb
