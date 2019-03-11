@@ -28,8 +28,6 @@ public static class Acronym
             result += words[i][0];
         }
 
-        result = result.ToUpper();
-
-        return result;
+        return result.ToUpper();
     }
 }
