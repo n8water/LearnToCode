@@ -1,0 +1,14 @@
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\Leap.deps.json
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\Leap.runtimeconfig.json
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\Leap.runtimeconfig.dev.json
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\Leap.dll
+C:\Users\Sabrina\Exercism\csharp\leap\bin\Debug\netcoreapp2.1\Leap.pdb
+C:\Users\Sabrina\Exercism\csharp\leap\obj\Debug\netcoreapp2.1\Leap.csprojAssemblyReference.cache
+C:\Users\Sabrina\Exercism\csharp\leap\obj\Debug\netcoreapp2.1\Leap.csproj.CoreCompileInputs.cache
+C:\Users\Sabrina\Exercism\csharp\leap\obj\Debug\netcoreapp2.1\Leap.AssemblyInfoInputs.cache
+C:\Users\Sabrina\Exercism\csharp\leap\obj\Debug\netcoreapp2.1\Leap.AssemblyInfo.cs
+C:\Users\Sabrina\Exercism\csharp\leap\obj\Debug\netcoreapp2.1\Leap.dll
+C:\Users\Sabrina\Exercism\csharp\leap\obj\Debug\netcoreapp2.1\Leap.pdb
