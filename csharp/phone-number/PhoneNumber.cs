@@ -1,7 +1,7 @@
 using System;
 
 public class PhoneNumber
-{
+{   
     public static string Clean(string phoneNumber)
     {
         string toCheck = string.Empty;
@@ -13,9 +13,8 @@ public class PhoneNumber
                 toCheck += c;
         }
 
-        //Check length
-        if(toCheck.Length < 12 && toCheck.Length > 9)
-            CheckValidity(toCheck);
+        if (toCheck.Length < 12 && toCheck.Length > 9)
+            clean = CheckValidity(toCheck);
         else
         {
             throw new ArgumentException("Phone number length is invalid");
@@ -53,14 +52,25 @@ public class PhoneNumber
         return clean;
     }
 
-    private static void CheckValidity(string numberToCheck)
+    private static string CheckValidity(string numberToCheck)
     {
+        string clean = string.Empty;
+
         if (numberToCheck.Length == 11 && numberToCheck[0] == '1')
             numberToCheck = numberToCheck.Substring(1);
+        else
+            throw new ArgumentException();
 
-        if((numberToCheck[0] != '0') && (numberToCheck[3] != '1'))
+
+        if ((numberToCheck[0] != '0') && (numberToCheck[3] != '1'))
         {
             clean = numberToCheck;
         }
+        else
+        {
+            throw new ArgumentException();
+        }
+
+        return clean;
     }
 }
