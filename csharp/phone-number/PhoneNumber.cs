@@ -58,8 +58,9 @@ public class PhoneNumber
         if (numberToCheck.Length == 11 && numberToCheck[0] == '1')
             numberToCheck = numberToCheck.Substring(1);
 
-
-
+        if((numberToCheck[0] != '0') && (numberToCheck[3] != '1'))
+        {
+            clean = numberToCheck;
+        }
     }
-
 }
