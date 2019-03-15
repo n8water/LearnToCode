@@ -2,47 +2,60 @@ using System;
 
 public class SpaceAge
 {
+    private readonly int _seconds;
+    private const int EarthYear = 31557600;
+
     public SpaceAge(int seconds)
     {
+        this._seconds = seconds;
+    }
+
+    private double CalculateAge(double factor)
+    {
+        double age = ((double)_seconds / EarthYear) / factor;
+        Math.Round(age, 2);
+        return age;
     }
 
     public double OnEarth()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(1);
     }
 
     public double OnMercury()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(0.2408467);
     }
 
     public double OnVenus()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(0.61519726);
     }
 
     public double OnMars()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(1.8808158);
     }
 
     public double OnJupiter()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(11.862615);
     }
 
     public double OnSaturn()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(29.447498);
     }
 
     public double OnUranus()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(84.016846);
     }
 
     public double OnNeptune()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateAge(164.79132);
     }
+
+
 }
