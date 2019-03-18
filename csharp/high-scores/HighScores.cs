@@ -4,28 +4,55 @@ using System.Linq;
 
 public class HighScores
 {
+    //global variables
+    private readonly List<int> _scores;
+
     public HighScores(List<int> list)
     {
-        throw new NotImplementedException();
+        _scores = list;
     }
 
     public List<int> Scores()
     {
-        throw new NotImplementedException();
+        CheckIfListContainsItems(_scores);
+
+        return _scores;
     }
 
     public int Latest()
     {
-        throw new NotImplementedException();
+        CheckIfListContainsItems(_scores);
+
+        return _scores.Last();
     }
 
     public int PersonalBest()
     {
-        throw new NotImplementedException();
+        CheckIfListContainsItems(_scores);
+
+        return _scores.Max();
     }
 
     public List<int> PersonalTopThree()
     {
-        throw new NotImplementedException();
+        CheckIfListContainsItems(_scores);
+        _scores.Sort();
+        _scores.Reverse();
+
+        if (_scores.Count < 4)
+        {
+            return _scores;
+        }
+
+        else
+            return _scores.GetRange(0, 3);
+ 
     }
+
+    private void CheckIfListContainsItems(List<int> scores)
+    {
+        if (_scores.Count < 0)
+            throw new NullReferenceException();
+    }
+
 }
