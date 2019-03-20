@@ -6,6 +6,7 @@ public class HighScores
 {
     //global variables
     private readonly List<int> _scores;
+   
 
     public HighScores(List<int> list)
     {
@@ -36,17 +37,10 @@ public class HighScores
     public List<int> PersonalTopThree()
     {
         CheckIfListContainsItems(_scores);
-        _scores.Sort();
-        _scores.Reverse();
 
-        if (_scores.Count < 4)
-        {
-            return _scores;
-        }
+        var temp = _scores.OrderByDescending(num => num);
 
-        else
-            return _scores.GetRange(0, 3);
- 
+        return _scores.Count<4?temp.ToList():temp.Take(3).ToList();
     }
 
     private void CheckIfListContainsItems(List<int> scores)
