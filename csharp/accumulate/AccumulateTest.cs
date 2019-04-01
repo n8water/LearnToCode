@@ -11,7 +11,7 @@ public class AccumulateTest
         Assert.Equal(new int[0], new int[0].Accumulate(x => x * x));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Accumulate_squares()
     {
         Assert.Equal(new[] { 1, 4, 9 }, new[] { 1, 2, 3 }.Accumulate(x => x * x));
