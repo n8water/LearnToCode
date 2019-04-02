@@ -6,11 +6,18 @@ public static class AccumulateExtensions
 {
     public static IEnumerable<U> Accumulate<T, U>(this IEnumerable<T> collection, Func<T, U> func)
     {
-        Type type = collection.GetType();
-        Type function = func.GetType();
+        var type = collection.GetType();
+        var function = func.GetType();
+        IEnumerable<U> bla =  collection.Where(x => x != null);
 
-        return 
+        return IEnumerable<U> bla;
     }
 
+    
 
 }
+
+public static class Extension()
+    {
+        public static void IEnumerable<>
+    }
