@@ -1,20 +1,16 @@
 using System;
+using System.Linq;
 
 public static class Hamming
 {
     public static int Distance(string firstStrand, string secondStrand)
-    {
-        int distance = 0;
-
-        if(firstStrand.Length != secondStrand.Length)
+    {        
+        if (firstStrand.Length != secondStrand.Length)
             throw new ArgumentException("Strands differ in length");
-
-        for (int i = 0; i < firstStrand.Length; i++)
-        {
-            if (firstStrand[i] != secondStrand[i])
-                distance++;
-        }
-
-        return distance;
+        
+        //Version with LINQ
+        var distance = firstStrand.Zip(secondStrand, (a, b) => a != b ? 1 : 0);
+                
+        return distance.Sum();
     }
 }
