@@ -4,7 +4,7 @@ using System.Linq;
 
 public static class NucleotideCount
 {
-    public static IDictionary<char, int> Count(string sequence)
+    public static IReadOnlyDictionary<char, int> Count(string sequence)
     {
         Dictionary<char, int> nucleotides = new Dictionary<char, int>
         {
@@ -17,11 +17,13 @@ public static class NucleotideCount
         foreach (char c in sequence)
         {
             if (nucleotides.ContainsKey(c))
-                nucleotides[c] += 1;
+                nucleotides[c]++;
             else
                 throw new ArgumentException();
         }
 
-        return nucleotides;
+        return (IReadOnlyDictionary<char, int>)nucleotides;
     }
+
+    
 }
