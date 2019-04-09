@@ -1,23 +1,15 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class AccumulateExtensions
 {
     public static IEnumerable<U> Accumulate<T, U>(this IEnumerable<T> collection, Func<T, U> func)
     {
-        var type = collection.GetType();
-        var function = func.GetType();
-        IEnumerable<U> bla =  collection.Where(x => x != null);
+        var inputCollection = collection;
+        
+        var outputCollection = collection.Select(c => func(c));
 
-        return IEnumerable<U> bla;
+        return outputCollection;
     }
-
-    
-
 }
-
-public static class Extension()
-    {
-        public static void IEnumerable<>
-    }
