@@ -1,8 +1,9 @@
 using System;
 using System.Diagnostics;
-using System.Reflection;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.DataCollection;
 using Xunit.Sdk;
+using System.Linq;
+using System.Collections.Generic;
 
 public enum Schedule
 {
@@ -17,23 +18,9 @@ public enum Schedule
 
 public class Meetup
 {
-    //Variables
-    private enum Teenth
-    {
-        Monteenth,
-        Tuesteenth,
-        Wednesteenth,
-        Thursteenth,
-        Friteenth,
-        Saturteenth,
-        Sunteenth
-    }
-
-    private string _descriptor;
-    private int _year;
-    private int _month;
-    private int _day;
-    private DayOfWeek _dayOfWeek;
+    private readonly int _year;
+    private readonly int _month;
+    private int _meetingDay;
     private DateTime _dayOfMeeting;
 
     //Constructor
@@ -41,14 +28,48 @@ public class Meetup
     {
         _month = month;
         _year = year;
-        //_descriptor = _stackTrace.GetFrame(1).GetMethod().Name;
-        _descriptor = new StackTrace().GetFrame(1).GetMethod().Name;
+
     }
 
     //Methods
     public DateTime Day(DayOfWeek dayOfWeek, Schedule schedule)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        int daysInMonth = DateTime.DaysInMonth(_year, _month);
+        int[] daysOfMonth = new int[daysInMonth];
+
+        for (int i = 0; i < daysInMonth; i++)
+        {
+            daysOfMonth[i] = i+1;
+        }
+
+        List<int> possibleMeetingDates = (List<int>) daysOfMonth.Where((d, i) => (d <= daysInMonth) && (new DateTime(_year, _month, i+1).DayOfWeek == dayOfWeek)).Select(x => x);
+
+        switch (schedule)
+        {
+            case Schedule.Teenth:
+                _meetingDay = Convert.ToInt32(possibleMeetingDates.Where(d => d < 20 && d >12));
+                break;
+            case Schedule.First:
+                _meetingDay = possibleMeetingDates.First();
+                break;
+            case Schedule.Second:
+                _meetingDay = possibleMeetingDates[1];
+                break;
+            case Schedule.Third:
+                _meetingDay = possibleMeetingDates[2];
+                break;
+            case Schedule.Fourth:
+                _meetingDay = possibleMeetingDates[3];
+                break;
+            case Schedule.Last:
+                _meetingDay = possibleMeetingDates.Last();
+                break;
+            default:
+                throw new ArgumentException();
+                
+        }
+
+        return _dayOfMeeting= new DateTime(_year, _month, _meetingDay);
     }
 
     
