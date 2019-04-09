@@ -18,12 +18,12 @@ public enum Schedule
 
 public class Meetup
 {
-    private readonly int _year;
-    private readonly int _month;
-    private int _meetingDay;
+    private int _year { get; }
+    private int _month { get; }
+
+    private int _day;
     private DateTime _dayOfMeeting;
 
-    //Constructor
     public Meetup(int month, int year)
     {
         _month = month;
@@ -31,48 +31,72 @@ public class Meetup
 
     }
 
-    //Methods
+    #region My Solution
+    //public DateTime Day(DayOfWeek dayOfWeek, Schedule schedule)
+    //{
+    //    int numberOfDays = DateTime.DaysInMonth(_year, _month);
+
+    //    List<int> possibleDays = new List<int>();
+
+    //    for (int i = 1; i <= numberOfDays; i++)
+    //    {
+    //        if (new DateTime(_year, _month, i).DayOfWeek == dayOfWeek)
+    //            possibleDays.Add(i);
+    //    }
+
+    //    var teenth = possibleDays.Where(x => (x > 12) && (x < 20)).Select(x => x);
+
+    //    switch (schedule)
+    //    {
+    //        case Schedule.Teenth:
+    //            _day = teenth.First();
+    //            break;
+    //        case Schedule.First:
+    //            _day = possibleDays.First();
+    //            break;
+    //        case Schedule.Second:
+    //            _day = possibleDays[1];
+    //            break;
+    //        case Schedule.Third:
+    //            _day = possibleDays[2];
+    //            break;
+    //        case Schedule.Fourth:
+    //            _day = possibleDays[3];
+    //            break;
+    //        case Schedule.Last:
+    //            _day = possibleDays.Last();
+    //            break;
+    //        default:
+    //            throw new ArgumentException();
+    //    }
+
+    //    _dayOfMeeting = new DateTime(_year, _month, _day);
+
+    //    return _dayOfMeeting;
+
+    //} 
+    #endregion
+
+    //Lösung aus Community mit LinQ
     public DateTime Day(DayOfWeek dayOfWeek, Schedule schedule)
     {
-        int daysInMonth = DateTime.DaysInMonth(_year, _month);
-        int[] daysOfMonth = new int[daysInMonth];
-
-        for (int i = 0; i < daysInMonth; i++)
-        {
-            daysOfMonth[i] = i+1;
-        }
-
-        List<int> possibleMeetingDates = (List<int>) daysOfMonth.Where((d, i) => (d <= daysInMonth) && (new DateTime(_year, _month, i+1).DayOfWeek == dayOfWeek)).Select(x => x);
+        var days = Enumerable
+            .Range(1, DateTime.DaysInMonth(_year, _month))
+            .Select(day => new DateTime(_year, _month, day))
+            .Where(date => date.DayOfWeek == dayOfWeek)
+            .ToList();
 
         switch (schedule)
         {
-            case Schedule.Teenth:
-                _meetingDay = Convert.ToInt32(possibleMeetingDates.Where(d => d < 20 && d >12));
-                break;
-            case Schedule.First:
-                _meetingDay = possibleMeetingDates.First();
-                break;
-            case Schedule.Second:
-                _meetingDay = possibleMeetingDates[1];
-                break;
-            case Schedule.Third:
-                _meetingDay = possibleMeetingDates[2];
-                break;
-            case Schedule.Fourth:
-                _meetingDay = possibleMeetingDates[3];
-                break;
-            case Schedule.Last:
-                _meetingDay = possibleMeetingDates.Last();
-                break;
-            default:
-                throw new ArgumentException();
-                
+            case Schedule.First: return days[0];
+            case Schedule.Second: return days[1];
+            case Schedule.Third: return days[2];
+            case Schedule.Fourth: return days[3];
+            case Schedule.Last: return days.Last();
+            case Schedule.Teenth: return days.First(date => date.Day > 12);
         }
-
-        return _dayOfMeeting= new DateTime(_year, _month, _meetingDay);
+        throw new ArgumentOutOfRangeException();
     }
-
-    
 }
 
 
