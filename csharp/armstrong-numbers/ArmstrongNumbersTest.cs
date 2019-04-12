@@ -10,43 +10,43 @@ public class ArmstrongNumbersTest
         Assert.True(ArmstrongNumbers.IsArmstrongNumber(5));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void There_are_no_2_digit_armstrong_numbers()
     {
         Assert.False(ArmstrongNumbers.IsArmstrongNumber(10));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Three_digit_number_that_is_an_armstrong_number()
     {
         Assert.True(ArmstrongNumbers.IsArmstrongNumber(153));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Three_digit_number_that_is_not_an_armstrong_number()
     {
         Assert.False(ArmstrongNumbers.IsArmstrongNumber(100));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Four_digit_number_that_is_an_armstrong_number()
     {
         Assert.True(ArmstrongNumbers.IsArmstrongNumber(9474));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Four_digit_number_that_is_not_an_armstrong_number()
     {
         Assert.False(ArmstrongNumbers.IsArmstrongNumber(9475));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Seven_digit_number_that_is_an_armstrong_number()
     {
         Assert.True(ArmstrongNumbers.IsArmstrongNumber(9926315));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Seven_digit_number_that_is_not_an_armstrong_number()
     {
         Assert.False(ArmstrongNumbers.IsArmstrongNumber(9926314));
