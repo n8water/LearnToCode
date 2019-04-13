@@ -1,51 +1,74 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 
 public class Robot
 {
+    private string _name;
+    Random random = new Random();
+
     public Robot()
     {
-        
+        _name = GenerateName();
     }
 
-    public string Name { get; private set; }
+    public string Name 
+    { 
+        get
+        {
+            return _name; 
+        }
+    }
+
 
 
     public void Reset()
     {
-        var Name = new RobotNames();
-        Name.GenerateName();
+        _name = GenerateName();
     }
 
 
-}
-
-public class RobotNames
-{
-    public List<string> robotNames = new List<string>();
 
     public string GenerateName()
     {
         string name = string.Empty;
-        Random random = new Random();
-        
-        for (int i = 0; i < 3; i++)
+
+        while (!RobotNames.CheckName(name))
         {
-            if(i<2)
-                name += (char) random.Next(65,91);
-            else
-                name += random.Next(100,1000);
+            name = string.Empty;
+            for (int i = 0; i < 3; i++)
+            {
+                if (i < 2)
+                    name += (char)random.Next(65, 91);
+                else
+                    name += random.Next(100, 1000);
+            }
+        }
+        RobotNames.Names.Add(name);        
+
+        return name;        
+    }
+ 
+}
+
+public static class RobotNames
+{
+    public static HashSet<string> Names;
+
+    public static bool CheckName(string name)
+    {
+        
+        if (RobotNames.Names == null)
+        {
+            RobotNames.Names = new HashSet<string>();
         }
 
-        if(!robotNames.Contains(name))
-        {
-            robotNames.Add(name);
-            return name;
-        }
-            
-        else               
-            throw new Exception ("This Name already exists");    
+        if (name.Length == 5 && RobotNames.Names.Add(name))
+            return true;
+
+        return false;                  
     }
+
 }
