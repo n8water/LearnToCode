@@ -1,19 +1,22 @@
 ﻿using System;
+using System.Linq;
 
 public static class DifferenceOfSquares
 {
     public static int CalculateSquareOfSum(int max)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        int squareOfSum = Enumerable.Range(1, max).Select(x=>x).Sum();
+        return squareOfSum * squareOfSum;
     }
 
     public static int CalculateSumOfSquares(int max)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        int sumOfSquares = Enumerable.Range(1,max).Select(x=> x * x).Sum();
+        return sumOfSquares;
     }
 
     public static int CalculateDifferenceOfSquares(int max)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return CalculateSquareOfSum(max) - CalculateSumOfSquares(max);    
     }
 }
