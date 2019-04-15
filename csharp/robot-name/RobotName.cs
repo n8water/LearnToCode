@@ -14,16 +14,8 @@ public class Robot
         _name = GenerateName();
     }
 
-    public string Name 
-    { 
-        get
-        {
-            return _name; 
-        }
-    }
-
-
-
+    public string Name { get { return _name;}}
+         
     public void Reset()
     {
         _name = GenerateName();
@@ -33,22 +25,23 @@ public class Robot
 
     public string GenerateName()
     {
-        string name = string.Empty;
+        string newName = string.Empty;
 
-        while (!RobotNames.CheckName(name))
+        do        
         {
-            name = string.Empty;
+            newName = string.Empty;
             for (int i = 0; i < 3; i++)
             {
                 if (i < 2)
-                    name += (char)random.Next(65, 91);
+                    newName += (char)random.Next(65, 91);
                 else
-                    name += random.Next(100, 1000);
+                    newName += random.Next(000, 1000);
             }
-        }
-        RobotNames.Names.Add(name);        
+        } while (!RobotNames.CheckName(newName));
 
-        return name;        
+        RobotNames.Names.Add(newName);        
+
+        return newName;        
     }
  
 }
@@ -56,6 +49,7 @@ public class Robot
 public static class RobotNames
 {
     public static HashSet<string> Names;
+    static int maxNames1 = 608399;
 
     public static bool CheckName(string name)
     {
@@ -64,8 +58,12 @@ public static class RobotNames
         {
             RobotNames.Names = new HashSet<string>();
         }
+        else if (RobotNames.Names.Count == maxNames1)
+        {
+            throw new Exception("No more names available");
+        }
 
-        if (name.Length == 5 && RobotNames.Names.Add(name))
+        if (RobotNames.Names.Add(name))
             return true;
 
         return false;                  
