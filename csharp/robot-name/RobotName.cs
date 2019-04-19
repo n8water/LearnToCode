@@ -8,6 +8,7 @@ public class Robot
 {
     private string _name;
     Random random = new Random();
+    string newName = string.Empty;
 
     public Robot()
     {
@@ -24,41 +25,42 @@ public class Robot
 
 
     public string GenerateName()
-    {
-        string newName = string.Empty;
-
+    {        
         do        
         {
-            newName = string.Empty;
-            for (int i = 0; i < 3; i++)
-            {
-                if (i < 2)
-                    newName += (char)random.Next(65, 91);
-                else
-                    newName += random.Next(000, 1000);
-            }
+            MakeNewName();            
         } while (!RobotNames.CheckName(newName));
 
-        RobotNames.Names.Add(newName);        
+        RobotNames.Names.Add(newName); 
 
         return newName;        
     }
  
+    public void MakeNewName()
+    {
+        string name = string.Empty;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < 2)
+                name += (char)random.Next(65, 91);
+            else
+                name += random.Next(10);
+        }
+
+        newName = name;
+    }
 }
 
 public static class RobotNames
 {
-    public static HashSet<string> Names;
-    static int maxNames1 = 608399;
+    public static HashSet<string> Names = new HashSet<string>();
+    static int maxNames = 26*26*10*10*10;
 
     public static bool CheckName(string name)
     {
-        
-        if (RobotNames.Names == null)
-        {
-            RobotNames.Names = new HashSet<string>();
-        }
-        else if (RobotNames.Names.Count == maxNames1)
+
+        if (RobotNames.Names.Count == maxNames)
         {
             throw new Exception("No more names available");
         }
