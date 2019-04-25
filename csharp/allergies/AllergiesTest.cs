@@ -13,14 +13,14 @@ public class AllergiesTest
         Assert.False(sut.IsAllergicTo(Allergen.Strawberries));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Is_allergic_to_eggs()
     {
         var sut = new Allergies(1);
         Assert.True(sut.IsAllergicTo(Allergen.Eggs));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_eggs_in_addition_to_other_stuff()
     {
         var sut = new Allergies(5);
