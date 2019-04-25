@@ -6,24 +6,17 @@ public static class LargestSeriesProduct
 {
     public static long GetLargestProduct(string digits, int span) 
     {
-        long result = 0;
-        List<long> segments = new List<long>();
-        long temp = 1;
+        long largestProduct = 0;
 
-        if(string.IsNullOrEmpty(digits) || (digits.Length < span) || span <= 0)
+        if (digits.Length <= 0 || span <= 0)
             throw new ArgumentException();
-        
-        for (int i = 0; i <= digits.Length-span; i++)
+
+        List<char> input = digits.ToList();
+
+        for (int i = 0; i+span <= input.Count; i++)
         {
-            if(!digits.Substring(i,span).Contains('0'))
-            {
-                segments.Add(Convert.ToInt64(digits.Substring(i,span)));
-            }
+            
         }
 
-        
-
-
-        return result;
     }
 }
