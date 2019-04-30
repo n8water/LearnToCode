@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 public enum Allergen
 {
-    Eggs = 1,
+    Eggs,
     Peanuts,
     Shellfish,
     Strawberries,
@@ -15,7 +16,8 @@ public enum Allergen
 public class Allergies
 {
     private int _mask;
-
+    private List<Allergen> allergenList;
+    
     
     public Allergies(int mask)
     {
@@ -24,39 +26,34 @@ public class Allergies
 
     public bool IsAllergicTo(Allergen allergen)
     {
-        int allergenValue = (int)allergen;
+        int allergenValue = (int)Math.Pow(2, (double)allergen);
         bool isAlleric = false;
 
         int test =  _mask & allergenValue;
         if (test > 0)
             isAlleric = true;
-
-        //int all = 3;
-        //Allergen aller = (Allergen)all;
-
+        
         return isAlleric;
     }
 
     public Allergen[] List()
     {
-        Allergen[] result = new Allergen[8];
+        int tempAllergen;
+        allergenList = new List<Allergen>();
 
-        int temp = 0;
-
-
-        //if (temp % 2 != 0)
-        //{
-        //    result[0] = (Allergen)1;
-        //    temp -= 1;
-        //}
-
-        for (int i = 0; Math.Pow(2,i) <= _mask; i++)
+        if (_mask % 2 != 0)
         {
-            temp = _mask & (int)Math.Pow(2, i);
-            if (temp > 0)
-                result[i] = (Allergen)i;
+            allergenList.Add((Allergen)0);
         }
 
-        return result.Length > 0 ? result : throw new ArgumentException();
+        for (int i = 1; i <= _mask; i++)
+        {
+            tempAllergen = _mask & (int)Math.Pow(2,i);
+            if(tempAllergen > 0)
+                if(i<8)
+                    allergenList.Add((Allergen)i);
+        }
+        
+        return allergenList.ToArray();
     }
 }
