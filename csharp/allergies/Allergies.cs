@@ -24,57 +24,22 @@ public class Allergies
 
     public bool IsAllergicTo(Allergen allergen)
     {
-
+        return ((Allergen)maskValue).HasFlag(allergen);
     }
 
     public Allergen[] List()
     {
+        int value = Enum.GetValues(typeof(Allergen)).Length;
+        List<Allergen> allergens = new List<Allergen>();
+        var testFor = (Allergen)maskValue;
 
+        for (int i = 0; i < value; i++)
+        {
+            int temp = (int)Math.Pow(2, i);
+            if(testFor.HasFlag((Allergen)temp))            
+                allergens.Add((Allergen)temp);
+        }
+     
+        return allergens.ToArray();
     }
 }
-
-//First working Solution
-//public class Allergies
-//{
-//    private int _mask;
-//    private List<Allergen> allergenList;
-
-
-//    public Allergies(int mask)
-//    {
-//        _mask = mask;
-//    }
-
-//    public bool IsAllergicTo(Allergen allergen)
-//    {
-//        int allergenValue = (int)Math.Pow(2, (double)allergen);
-//        bool isAlleric = false;
-
-//        int test =  _mask & allergenValue;
-//        if (test > 0)
-//            isAlleric = true;
-
-//        return isAlleric;
-//    }
-
-//    public Allergen[] List()
-//    {
-//        int tempAllergen;
-//        allergenList = new List<Allergen>();
-
-//        if (_mask % 2 != 0)
-//        {
-//            allergenList.Add((Allergen)0);
-//        }
-
-//        for (int i = 1; i <= _mask; i++)
-//        {
-//            tempAllergen = _mask & (int)Math.Pow(2,i);
-//            if(tempAllergen > 0)
-//                if(i<8)
-//                    allergenList.Add((Allergen)i);
-//        }
-
-//        return allergenList.ToArray();
-//    }
-//}
