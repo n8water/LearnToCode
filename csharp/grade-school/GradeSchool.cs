@@ -4,26 +4,37 @@ using System.Linq;
 
 public class GradeSchool
 {
-    Dictionary<string, int> studentGrade = new Dictionary<string, int>();
+    private List<Student> studentList = new List<Student>();
     public void Add(string student, int grade)
     {
-        studentGrade.Add(student, grade);
+        studentList.Add(new Student(student, grade));
     }
 
     public IEnumerable<string> Roster()
     {
-        List<string> students = new List<string>();
+        var sortedList = studentList.OrderBy(s=>s.Name);
+        var orderedList = sortedList.OrderBy(o => o.Grade).Select(s=>s.Name);
 
-
-
-        //var students = studentGrade.Where((k, v) => )
-
-        return students;
-  
+        return orderedList;
     }
 
     public IEnumerable<string> Grade(int grade)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        var studentsInGrade = studentList.Where(s => s.Grade.Equals(grade)).OrderBy(s=>s.Name).Select(s => s.Name);
+
+        return studentsInGrade;
+    }
+
+    public class Student
+    {
+        public string Name { get;  }
+        public int Grade { get; set; }
+
+        public Student(string student, int grade)
+        {
+            Name = student;
+            Grade = grade;
+        }
+
     }
 }

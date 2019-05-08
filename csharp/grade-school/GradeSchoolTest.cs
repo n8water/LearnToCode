@@ -69,7 +69,7 @@ public class GradeSchoolTest
         Assert.Equal(expected, sut.Grade(5));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Grade_returns_an_empty_list_if_there_are_no_students_in_that_grade()
     {
         var sut = new GradeSchool();
