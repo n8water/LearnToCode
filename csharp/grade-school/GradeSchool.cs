@@ -12,10 +12,9 @@ public class GradeSchool
 
     public IEnumerable<string> Roster()
     {
-        var sortedList = studentList.OrderBy(s=>s.Name);
-        var orderedList = sortedList.OrderBy(o => o.Grade).Select(s=>s.Name);
+        var sortedList = studentList.OrderBy(s=>s.Grade).ThenBy(s => s.Name).Select(s=>s.Name);
 
-        return orderedList;
+        return sortedList;
     }
 
     public IEnumerable<string> Grade(int grade)
@@ -28,7 +27,7 @@ public class GradeSchool
     public class Student
     {
         public string Name { get;  }
-        public int Grade { get; set; }
+        public int Grade { get; }
 
         public Student(string student, int grade)
         {
