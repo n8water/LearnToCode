@@ -4,39 +4,24 @@ public static class RotationalCipher
 {
     public static string Rotate(string text, int shiftKey)
     {
-        string rotate = string.Empty;
+        string result = string.Empty;
 
-        foreach (char c in text)
-        {
-            int temp = (int)c;
+        foreach(char c in text)
+            result += Encrypt( c, shiftKey);
+        
+        return result;
+    }
 
-            //Gross und Kleinbuchstaben getrennt behandeln sonst können die Zeichen von gross zu klein wechseln
-            //das ist nicht erwünscht
-            
+    private static char Encrypt(char c, int key)
+    {
+        if(!char.IsLetter(c))
+            return c;
 
-            if ((temp <= 122 && temp >= 97) || (temp <= 90 && temp >= 65))
-            {
-                temp += shiftKey;
-                if ((temp <= 122 && temp >= 97) || (temp <= 90 && temp >=65))
-                {
-                    rotate += (char)temp;
-                    temp = 0;
-                }
-                else
-                {
-                    temp -= 26;
-                    rotate += (char)temp;
-                    temp = 0;
-                }
-
-            }
-            else
-            {
-                rotate += c;
-                temp = 0;
-            }
-        }
-
-        return rotate;
+        //Is c upper or lower?
+        char b = char.IsUpper(c) ? 'A' : 'a';
+        
+        //This way of dealing with char and leaving a-z A-Z was new to me
+        //my first approach had many if statements
+        return (char)((((c+key)-b) % 26) + b);
     }
 }
