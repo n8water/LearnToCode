@@ -20,8 +20,6 @@ public static class RotationalCipher
         //Is c upper or lower?
         char b = char.IsUpper(c) ? 'A' : 'a';
         
-        //This way of dealing with char and leaving a-z A-Z was new to me
-        //my first approach had many if statements
         return (char)((((c+key)-b) % 26) + b);
     }
 }
