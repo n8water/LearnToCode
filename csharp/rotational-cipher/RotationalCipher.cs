@@ -1,15 +1,16 @@
 using System;
+using System.Text;
 
 public static class RotationalCipher
 {
     public static string Rotate(string text, int shiftKey)
     {
-        string result = string.Empty;
+        StringBuilder result = new StringBuilder();
 
         foreach(char c in text)
-            result += Encrypt( c, shiftKey);
+            result.Append(Encrypt( c, shiftKey));
         
-        return result;
+        return result.ToString();
     }
 
     private static char Encrypt(char c, int key)
