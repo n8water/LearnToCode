@@ -1,17 +1,22 @@
 using System;
+using System.Text;
 
 public class Clock
 {
+    private int _hours;
+    private int _minutes;
+    
     public Clock(int hours, int minutes)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        _hours = hours;
+        _minutes = minutes;
     }
 
     public int Hours
     {
         get
         {
-            throw new NotImplementedException("You need to implement this function.");
+            return _hours;
         }
     }
 
@@ -19,13 +24,22 @@ public class Clock
     {
         get
         {
-            throw new NotImplementedException("You need to implement this function.");
+            return _minutes;
         }
     }
 
     public Clock Add(int minutesToAdd)
     {
+        
+
+        int newMinutes = _minutes + minutesToAdd;
+        if(newMinutes<0)
+        {
+
+        }
+        
         throw new NotImplementedException("You need to implement this function.");
+
     }
 
     public Clock Subtract(int minutesToSubtract)
@@ -35,6 +49,6 @@ public class Clock
 
     public override string ToString()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return string.Format("{0:00}:{1:00}", _hours, _minutes);
     }
 }
