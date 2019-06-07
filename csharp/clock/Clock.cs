@@ -1,10 +1,10 @@
 using System;
 using System.Text;
 
-public class Clock
+public class Clock : IEquatable<Clock>
 {
-    private int _hours;
-    private int _minutes;
+    private int hours;
+    private int minutes;
     
     public Clock(int hours, int minutes)
     {
@@ -16,7 +16,7 @@ public class Clock
     {
         get
         {
-            return _hours;
+            return hours;
         }
         set
         {
@@ -25,12 +25,12 @@ public class Clock
                 value += 24;
             }
 
-            while(value > 23)
+            while(value >= 24)
             {
                 value -= 24;
             }
 
-            _hours = value;            
+            hours = value;            
         }
     }
 
@@ -38,41 +38,42 @@ public class Clock
     {
         get
         {
-            return _minutes;
+            return minutes;
         }
         set
         {
             int counter = 0;
+            while(value < 0)
+            {
+                value += 60;
+                counter--;
+            }
             while(value > 59)
             {
                 value -= 60;
                 counter++;
             }
 
-            _minutes = value;
-            //Add(60 * counter);
-
-
-                
+            minutes = value;
+            Hours += counter;
         }
     }
 
     public Clock Add(int minutesToAdd)
     {
-        var changedTime = new DateTime(2019, 06, 03, _hours, _minutes, 0);
+        var changedTime = new DateTime(2019, 06, 03, hours, minutes, 0);
         changedTime = changedTime.AddMinutes(minutesToAdd);
-        //changedTime.ToShortTimeString();
         Hours = changedTime.Hour;
         Minutes = changedTime.Minute;
 
-        return new Clock(_hours, _minutes);
+        return new Clock(hours, minutes);
 
     }
 
     public Clock Subtract(int minutesToSubtract)
     {
-        var changedTime = new DateTime(2019, 06, 03, _hours, _minutes, 0);
-        changedTime = changedTime.AddMinutes(minutesToSubtract);
+        var changedTime = new DateTime(2019, 06, 03, hours, minutes, 0);
+        changedTime = changedTime.AddMinutes(minutesToSubtract * -1);
         Hours = changedTime.Hour;
         Minutes = changedTime.Minute;
 
@@ -81,11 +82,11 @@ public class Clock
 
     public override string ToString()
     {
-        return string.Format("{0:00}:{1:00}", _hours, _minutes);
+        return string.Format("{0:00}:{1:00}", hours, minutes);
     }
 
-    public override bool Equals(object obj)
+    public bool Equals(Clock other)
     {
-        return base.Equals(obj);    
+        throw new NotImplementedException();
     }
 }
