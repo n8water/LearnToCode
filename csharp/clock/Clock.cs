@@ -7,6 +7,7 @@ public class Clock : IEquatable<Clock>
     private int hours;
     private int minutes;
 
+    //public int Hours { get; private set; }
     public int Hours
     {
         get => hours;
@@ -20,13 +21,13 @@ public class Clock : IEquatable<Clock>
     #region ctor
     public Clock(int hours, int minutes)
     {
-        setHour(hours);
-        setMinute(minutes);
+        SetHour(hours);
+        SetMinute(minutes);
     }
     #endregion
 
     #region Methods
-    private void setHour(int hour)
+    private void SetHour(int hour)
     {
         int temp = hour % 24;
 
@@ -36,7 +37,7 @@ public class Clock : IEquatable<Clock>
             hours = temp;
     }
 
-    private void setMinute(int minute)
+    private void SetMinute(int minute)
     {
         int temp = minute % 60;
         int changeHour = minute / 60;
@@ -50,7 +51,7 @@ public class Clock : IEquatable<Clock>
             minutes = temp;
 
         if(changeHour != 0)
-            setHour(hours + changeHour);
+            SetHour(hours + changeHour);
     }
 
     public Clock Add(int minutesToAdd)
