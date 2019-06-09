@@ -9,79 +9,65 @@ public class Clock : IEquatable<Clock>
 
     public int Hours
     {
-        get
-        {
-            return hours;
-        }
-        set
-        {
-            while(value < 0)
-            {
-                value += 24;
-            }
-            while(value >= 24)
-            {
-                value -= 24;
-            }
-            hours = value;            
-        }
+        get => hours;
     }
-
     public int Minutes
     {
-        get
-        {
-            return minutes;
-        }
-        set
-        {
-            int counter = 0;
-            while(value < 0)
-            {
-                value += 60;
-                counter--;
-            }
-            while(value > 59)
-            {
-                value -= 60;
-                counter++;
-            }
-            Hours += counter;
-            minutes = value;
-        }
+        get => minutes;
     }
     #endregion
 
     #region ctor
     public Clock(int hours, int minutes)
     {
-        Hours = hours;
-        Minutes = minutes;
+        setHour(hours);
+        setMinute(minutes);
     }
     #endregion
 
     #region Methods
+    private void setHour(int hour)
+    {
+        int temp = hour % 24;
+
+        if(temp < 0)
+            hours = temp + 24;            
+        else
+            hours = temp;
+    }
+
+    private void setMinute(int minute)
+    {
+        int temp = minute % 60;
+        int changeHour = minute / 60;
+
+        if(temp < 0)
+        {
+            minutes = temp + 60;
+            changeHour--;
+        }
+        else
+            minutes = temp;
+
+        if(changeHour != 0)
+            setHour(hours + changeHour);
+    }
 
     public Clock Add(int minutesToAdd)
     {
-        var changedTime = new DateTime(2019, 06, 03, hours, minutes, 0);
-        changedTime = changedTime.AddMinutes(minutesToAdd);
-        return new Clock(changedTime.Hour, changedTime.Minute);
+        int newMinutes = minutes + minutesToAdd;
+        return new Clock(this.hours, newMinutes);
     }
 
     public Clock Subtract(int minutesToSubtract)
     {
-        var changedTime = new DateTime(2019, 06, 03, hours, minutes, 0);
-        changedTime = changedTime.AddMinutes(minutesToSubtract * -1);
-        return new Clock(changedTime.Hour, changedTime.Minute);
+        int newMinutes = minutes - minutesToSubtract;
+        return new Clock(hours, newMinutes);
     }
 
     public bool Equals(Clock other)
     {
-        if((this.Hours == other.Hours) && (this.Minutes == other.Minutes))
-            return true;
-        else
-            return false;
+        return ((this.Hours == other.Hours) && (this.Minutes == other.Minutes));
     }
 
     public override string ToString()
