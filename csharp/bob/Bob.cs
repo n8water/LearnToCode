@@ -19,12 +19,14 @@ public static class Bob
             }
         }
 
-        var output = input.Where(c => !char.IsNumber(c)?c:(char)32);
+        //var output = input.Where(c => !char.IsNumber(c)?c:);
 
-        string shouting = statement.ToUpper();
+        //string shouting = statement.ToUpper();
         statement = statement.Trim();
 
-        if(statement.EndsWith("?") && statement == shouting)
+
+
+        if(statement.EndsWith("?") && IsShouting(statement))
         {
             answer= "Calm down, I know what I'm doing!";
         }
@@ -32,7 +34,7 @@ public static class Bob
         {
             answer = "Sure.";
         }
-        else if (statement.EndsWith("!") || statement == shouting)
+        else if (IsShouting(statement) && statement.EndsWith("!") || IsNumeric(statement) && statement.EndsWith("!"))
         {
             answer = "Whoa, chill out!";
         }
@@ -44,16 +46,30 @@ public static class Bob
         {
             answer = "Whatever.";
         }
-
+        
         return answer;
+
+
+
+        bool IsShouting(string stringToCheck)
+        {
+            bool isShouting = false;
+            var cleanString = stringToCheck.Where(c => char.IsLetter(c));
+            
+            isShouting = cleanString.All<char>(c => char.IsUpper(c));
+
+            return isShouting;
+        }
+
+        bool IsNumeric(string stringToCheck)
+        {
+            bool isNumeric = stringToCheck.All<char>(c => char.IsNumber(c) | char.IsPunctuation(c) | char.IsSeparator(c));
+            return isNumeric;
+        }
     }
 
     public static class StringExtensionMethods
     {
-        static void IsUpperCase(string input)
-        {
-            
-        }
 
 
     }
