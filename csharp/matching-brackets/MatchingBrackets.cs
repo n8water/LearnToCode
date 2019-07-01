@@ -1,9 +1,20 @@
 using System;
+using System.Collections.Generic;
 
 public static class MatchingBrackets
 {
     public static bool IsPaired(string input)
     {
-        throw new NotImplementedException();
+        private static readonly Dictionary<char, char> brackets = new Dictionary<char, char>()
+        {
+            '(' , ')';
+        
+        };
+        
+
+        if(input.Length == 0)
+            return true;
+        else
+            return false;
     }
 }

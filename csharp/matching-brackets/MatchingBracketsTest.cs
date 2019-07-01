@@ -11,7 +11,7 @@ public class MatchingBracketsTest
         Assert.True(MatchingBrackets.IsPaired(value));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Empty_string()
     {
         var value = "";
