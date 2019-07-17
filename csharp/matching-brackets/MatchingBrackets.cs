@@ -3,15 +3,13 @@ using System.Collections.Generic;
 
 public static class MatchingBrackets
 {
-    static string openingBrackets = "([{";
-    static string closingBrackets = ")]}";
-    static Stack<char> inputBrackets = new Stack<char>();
-    static bool isPaired;
+    private static readonly string openingBrackets = "([{";
+    private static readonly string closingBrackets = ")]}";
+    static bool isPaired = false;
 
     public static bool IsPaired(string input)
     {
-        inputBrackets.Clear();
-        isPaired = false;
+        var inputBrackets = new Stack<char>();
 
         if(input == string.Empty)
             isPaired = true;
@@ -25,7 +23,7 @@ public static class MatchingBrackets
                 }
                 else if (closingBrackets.Contains(c))
                 {
-                    isPaired = checkIfBracketsPair(c);
+                    isPaired = checkIfBracketsPair(c, inputBrackets);
                 }
             }
         }        
@@ -36,13 +34,8 @@ public static class MatchingBrackets
         return isPaired;
     }
 
-    private static bool checkIfBracketsPair(char c)
+    private static bool checkIfBracketsPair(char c, Stack<char>brackets)
     {
-        if(inputBrackets.Count > 0 && (openingBrackets.IndexOf(inputBrackets.Pop()) == closingBrackets.IndexOf(c)))
-        {
-            return true;
-        }
-        else
-            return false;
+        return brackets.Count > 0 && (openingBrackets.IndexOf(brackets.Pop()) == closingBrackets.IndexOf(c));
     }
 }
