@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace BeerSong
+public static class BeerSong
 {
-    class BeerSong
+    public static string Recite(int startBottles, int takeDown)
     {
+        throw new NotImplementedException("You need to implement this function.");
     }
 }
