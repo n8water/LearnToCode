@@ -10,7 +10,7 @@ public class BeerSongTest
         var expected = 
             "99 bottles of beer on the wall, 99 bottles of beer.\n" +
             "Take one down and pass it around, 98 bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(99, 1));
+        Assert.Equal(expected, BeerSong_old.Recite(99, 1));
     }
 
     [Fact]
@@ -19,7 +19,7 @@ public class BeerSongTest
         var expected = 
             "3 bottles of beer on the wall, 3 bottles of beer.\n" +
             "Take one down and pass it around, 2 bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(3, 1));
+        Assert.Equal(expected, BeerSong_old.Recite(3, 1));
     }
 
     [Fact]
@@ -28,7 +28,7 @@ public class BeerSongTest
         var expected = 
             "2 bottles of beer on the wall, 2 bottles of beer.\n" +
             "Take one down and pass it around, 1 bottle of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(2, 1));
+        Assert.Equal(expected, BeerSong_old.Recite(2, 1));
     }
 
     [Fact]
@@ -37,7 +37,7 @@ public class BeerSongTest
         var expected = 
             "1 bottle of beer on the wall, 1 bottle of beer.\n" +
             "Take it down and pass it around, no more bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(1, 1));
+        Assert.Equal(expected, BeerSong_old.Recite(1, 1));
     }
 
     [Fact]
@@ -46,7 +46,7 @@ public class BeerSongTest
         var expected = 
             "No more bottles of beer on the wall, no more bottles of beer.\n" +
             "Go to the store and buy some more, 99 bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(0, 1));
+        Assert.Equal(expected, BeerSong_old.Recite(0, 1));
     }
 
     [Fact]
@@ -58,7 +58,7 @@ public class BeerSongTest
             "\n" +
             "98 bottles of beer on the wall, 98 bottles of beer.\n" +
             "Take one down and pass it around, 97 bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(99, 2));
+        Assert.Equal(expected, BeerSong_old.Recite(99, 2));
     }
 
     [Fact]
@@ -73,7 +73,7 @@ public class BeerSongTest
             "\n" +
             "No more bottles of beer on the wall, no more bottles of beer.\n" +
             "Go to the store and buy some more, 99 bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(2, 3));
+        Assert.Equal(expected, BeerSong_old.Recite(2, 3));
     }
 
     [Fact]
@@ -379,6 +379,6 @@ public class BeerSongTest
             "\n" +
             "No more bottles of beer on the wall, no more bottles of beer.\n" +
             "Go to the store and buy some more, 99 bottles of beer on the wall.";
-        Assert.Equal(expected, BeerSong.Recite(99, 100));
+        Assert.Equal(expected, BeerSong_old.Recite(99, 100));
     }
 }
