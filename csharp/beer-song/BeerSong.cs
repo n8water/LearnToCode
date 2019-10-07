@@ -2,13 +2,31 @@
 
 public static class BeerSong
 {
+    static string result;
     public static string Recite(int startBottles, int takeDown)
     {
+        #region Variables
+        result = string.Empty;
+
         int bottles = startBottles;
         int counter = takeDown;
+        #endregion
 
-        string vers = $"{bottles} bottles of beer on the wall, {bottles} bottles of beer.\n" +
-                        $"Take one down and pass it around, {bottles - 1} bottles of beer on the wall.";
+        while (counter > 0)
+        {
+            AddLine(bottles);
+            bottles--;
+            counter--;
+        }
+
+        return result;
+    }
+
+    private static void AddLine(int input)
+    {
+
+        string vers = $"{input} bottles of beer on the wall, {input} bottles of beer.\n" +
+                $"Take one down and pass it around, {input - 1} bottles of beer on the wall.";
 
         string twoBottles = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
             $"Take one down and pass it around, 1 bottle of beer on the wall.";
@@ -19,23 +37,24 @@ public static class BeerSong
         string noBottle = "No more bottles of beer on the wall, no more bottles of beer.\n" +
             "Go to the store and buy some more, 99 bottles of beer on the wall.";
 
-        string result = string.Empty;
-
-        while (counter > 0 && bottles > 2)
-        {
+        if (result != string.Empty)
+            result += "\n\n";
+               
+        if (input > 2)
+        {            
             result += vers;
-            bottles--;
-            counter--;
         }
-
-        if (counter > 0 && bottles == 2)
+        else if(input == 2)
+        {
             result += twoBottles;
-        else if (counter > 0 && bottles == 1)
+        }
+        else if(input == 1)
+        {
             result += oneBottle;
-        else if (counter >= 0 && bottles == 0)
+        }
+        else if(input == 0)
+        {
             result += noBottle;
-
-        return result;
-
+        }
     }
 }
