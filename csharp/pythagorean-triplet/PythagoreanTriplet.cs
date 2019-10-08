@@ -5,7 +5,7 @@ public static class PythagoreanTriplet
 {
     public static IEnumerable<(int a, int b, int c)> TripletsWithSum(int sum)
     {
-        int a = 1;
+        int a = 0;
         int b = sum;
         int c = sum;
         int sumAbc;
