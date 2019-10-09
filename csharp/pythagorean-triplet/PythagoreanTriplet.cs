@@ -5,39 +5,34 @@ public static class PythagoreanTriplet
 {
     public static IEnumerable<(int a, int b, int c)> TripletsWithSum(int sum)
     {
-        int a = 0;
-        int b = sum;
         int c = sum;
-        int sumAbc;
         var result = new List<(int a, int b, int c)>();
 
-        for (int ia = a; ia < sum / 3; ia++)
+        for (int a = 0; a < sum / 3; a++)
         {
-            for (int ib = ia + 1; ib <b; ib++)
+            for (int b = a + 1; b < sum / 2; b++)
             {
-                for (int ic = ib + 1; ic < c; ic++)
-                {
-                    if (ia + ib + ic == sum && (ia * ia + ib * ib == ic * ic))
-                    {
-                        result.Add((ia, ib, ic));
-                        a = ia;
-                        b = ib;
-                        c = ic;
-                    }
+                c = sum - a - b;
 
-                }
+                if ((c > b) && (a * a + b * b == c * c))
+                    result.Add((a, b, c));                
             }
         }
 
-        //for (int ia = sum / 25; ia < sum / 3; ia++)
+        // My first try, I oversaw the simpler way
+
+        //for (int ia = a; ia < sum / 3; ia++)
         //{
-        //    for (int ib = ia + 1; ib < sum / 2; ib++)
+        //    for (int ib = ia + 1; ib < b; ib++)
         //    {
-        //        for (int ic = ib + 1; ic < sum / 2; ic++)
+        //        for (int ic = ib + 1; ic < c; ic++)
         //        {
         //            if (ia + ib + ic == sum && (ia * ia + ib * ib == ic * ic))
         //            {
         //                result.Add((ia, ib, ic));
+        //                a = ia;
+        //                b = ib;
+        //                c = ic;
         //            }
 
         //        }
@@ -45,6 +40,5 @@ public static class PythagoreanTriplet
         //}
 
         return result;
-        //return new List<(int a, int b, int c)>();
     }
 }
