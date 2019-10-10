@@ -1,0 +1,2 @@
+﻿Help with converting
+https://courses.cs.vt.edu/~cs1104/number_conversion/convexp.html
