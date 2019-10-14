@@ -10,7 +10,7 @@ public class PascalsTriangleTest
         Assert.Empty(PascalsTriangle.Calculate(0));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Single_row()
     {
         var expected = new[]
@@ -20,7 +20,7 @@ public class PascalsTriangleTest
         Assert.Equal(expected, PascalsTriangle.Calculate(1));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Two_rows()
     {
         var expected = new[]

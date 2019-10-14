@@ -1,18 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class PascalsTriangle
 {
     public static IEnumerable<IEnumerable<int>> Calculate(int rows)
     {
+        int[][] result = new int[rows][];
 
-        throw new NotImplementedException();
+        int test = result.Length;
+
+        if (rows <= 0)
+           return result;
+
+        for (int n = 0; n < rows; n++)
+            if (n == 0)
+            {
+                int number = n + 1 ;
+                result[0] = new int[number] { 1 };
+            }
+            else if (n == 1)
+                result[n] = new int[2] { n, n };
+
+        //var result = new int[0];
+
+        //if (rows <= 0)
+        //    yield return int[0];
+
+        //for (int n = 0; n < rows; n++)
+        //    if (n == 0)
+        //        result.Add(new int[n]);
+        //    //for(int k = 0; k <= n; k++)
+
+
+
+
+
+
+        //result.Add(new List<int>());
+
+        return result;
+        //throw new NotImplementedException();
     }
 
 }
 
 /* Notizen
 Pascalsches Dreieck
+
+    \binom{n+1}{k+1} = \binom{n}{k} + \binom{n}{k+1}
 
 Dabei kann die Variable n als Zeilenindex und k als Spaltenindex interpretiert werden, 
 wobei die Zählung mit Null beginnt (also erste Zeile n=0, erste Spalte k=0). 
