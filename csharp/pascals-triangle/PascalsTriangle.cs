@@ -17,10 +17,10 @@ public static class PascalsTriangle
             if (n == 0)
             {
                 int number = n + 1 ;
-                result[0] = new int[number] { 1 };
+                result[0] = new int[] { 1 };
             }
             else if (n == 1)
-                result[n] = new int[2] { n, n };
+                result[n] = new int[] { n, n };
 
         //var result = new int[0];
 
