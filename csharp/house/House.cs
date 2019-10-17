@@ -31,7 +31,9 @@ public static class House
     private static string Verse(int verseNumber)
     {
         string start = "This is the ";
-        string end = "the house that Jack build";
+
+        string end1 = "house that Jack built.";
+        string end = "in the house that Jack built.";
 
         if (verseNumber == 1)
             return "This is the house that Jack built.";
