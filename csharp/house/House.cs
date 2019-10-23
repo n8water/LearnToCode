@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public static class House
 {
+    //private static readonly List<(string who, string what)> lines = new List<(string, string)>();
+    //private static readonly List<string> verses = new List<string>();
+
     private static readonly List<string> who = new List<string>()
     {   
         "malt",
