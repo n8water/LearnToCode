@@ -3,41 +3,80 @@ using System.Collections.Generic;
 
 public static class House
 {
-    private static readonly Dictionary<string, string> versValues = new Dictionary<string, string>
-    {
-        { "malt", "lay"},
-        { "rat", "ate" },
-        { "cat", "killed" },
-        { "dog", "worried" },
-        { "cow with the crumpled horn", "tossed" },
-        { "maiden all forlorn", "milked" },
-        { "man all tattered and torn", "kissed" },
-        { "priest all shaven and shorn", "married" },
-        { "rooster that crowed in the morn", "woke" },
-        { "farmer sowing his corn", "kept" },
-        { "horse and the hound and the horn", "belonged" },
+    private static readonly List<string> who = new List<string>()
+    {   
+        "malt",
+        "rat",
+        "cat",
+        "dog",
+        "cow with the crumpled horn",
+        "maiden all forlorn",
+        "man all tattered and torn",
+        "priest all shaven and shorn",
+        "rooster that crowed in the morn",
+        "farmer sowing his corn",
+        "horse and the hound and the horn"
     };
+
+    private static readonly List<string> what = new List<string>()
+    {
+        "lay",
+        "ate",
+        "killed",
+        "worried",
+        "tossed",
+        "milked",
+        "kissed",
+        "married",
+        "woke",
+        "kept",
+        "belonged to"
+    };
+
     public static string Recite(int verseNumber)
     {
-        return Verse(verseNumber);
-        throw new NotImplementedException("You need to implement this function.");
+        return Verse(verseNumber);        
     }
 
     public static string Recite(int startVerse, int endVerse)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        string result = string.Empty;
+
+        for(int i = startVerse; i <= endVerse; i++)
+        {
+            if (result == string.Empty)
+                result += Verse(i);
+            else
+                result += "\n" + Verse(i);
+        }
+
+        return result;
     }
 
     private static string Verse(int verseNumber)
     {
-        string start = "This is the ";
-
-        string end1 = "house that Jack built.";
-        string end = "in the house that Jack built.";
+        string result = string.Empty;
+        string verseStart = "This is the ";
+        string endVerseOne = "house that Jack built.";
+        string verseEnd = " in the house that Jack built.";
 
         if (verseNumber == 1)
-            return "This is the house that Jack built.";
+        {
+            result += verseStart + endVerseOne;
+        }
         else
-            throw new NotImplementedException("to be done");
+        {
+            result += verseStart;
+            for(int i = verseNumber - 2; i >= 0; i--)
+            {
+                result += who[i] + " that " + what[i];
+                if (i == 0)
+                    result += verseEnd;
+                else
+                    result += " the ";
+            }
+        }
+
+        return result;
     }
 }
