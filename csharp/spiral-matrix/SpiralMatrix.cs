@@ -4,13 +4,26 @@ public class SpiralMatrix
 {
     public static int[,] GetMatrix(int size)
     {
-        int arraySize = size - 1;
+        int arraySize = 0;
+        int x = 0;
+        int y = 0;
+
+        if (size >= 1)
+            arraySize = size - 1;
+        
         int[,] result = new int[arraySize, arraySize];
 
-        result[2, 1] = 6;
-        result[0, 0] = 1;
+        for(int i = 1; i <= size; i++)
+        {
+            int tempX = x;
+            int tempY = y;
+
+            result[tempX, tempY] = i;
+
+        }
+
 
         return result;
-        throw new NotImplementedException("You need to implement this function.");
+        
     }
 }

@@ -10,7 +10,7 @@ public class SpiralMatrixTest
         Assert.Empty(SpiralMatrix.GetMatrix(0));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Trivial_spiral()
     {
         var expected = new[,]
