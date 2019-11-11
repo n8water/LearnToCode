@@ -4,12 +4,9 @@ public class SpiralMatrix
 {
     public static int[,] GetMatrix(int size)
     {
-        int arraySize = 0;
+        int arraySize = size;
         int x = 0;
         int y = 0;
-
-        if (size >= 1)
-            arraySize = size - 1;
         
         int[,] result = new int[arraySize, arraySize];
 
@@ -19,6 +16,9 @@ public class SpiralMatrix
             int tempY = y;
 
             result[tempX, tempY] = i;
+
+            tempX++;
+            tempY++;
 
         }
 
