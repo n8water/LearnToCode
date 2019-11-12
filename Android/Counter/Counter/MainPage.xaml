@@ -5,12 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Counter.MainPage">
+    <StackLayout VerticalOptions="Center">
+        <Label Text="0"
+               x:Name="CounterLabel"
+               TextColor="Aquamarine"
+               FontSize="72"
+               FontFamily="ComicSans"
+               HorizontalOptions="Center" 
+            />
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Button Text="Increment!"
+                Clicked="IncrementCounterClicked"
+                FontSize="46"
+                />
     </StackLayout>
-
 </ContentPage>
