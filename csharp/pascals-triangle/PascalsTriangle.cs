@@ -1,30 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class PascalsTriangle
 {
     public static IEnumerable<IEnumerable<int>> Calculate(int rows)
     {
+        int[][] result = new int[rows][];
+        var rowNumbers = new List<int>();
 
-        throw new NotImplementedException();
+        if (rows <= 0)
+           return result;
+
+        for (int n = 0; n < rows; n++)
+        {
+            rowNumbers.Clear();
+
+            if (n == 0)
+            {
+                rowNumbers.Add(1);
+            }
+            else
+            {
+                int previousRow = n - 1;
+                int columns = n + 1;
+
+                foreach (int k in Enumerable.Range(0, columns))
+                {
+                    if (k - 1 < 0 || k > previousRow)
+                        rowNumbers.Add(1);
+                    else
+                        rowNumbers.Add(result[previousRow][k] + result[previousRow][k - 1]);
+                }
+            }
+            result[n] = rowNumbers.ToArray();
+        }
+        return result;
     }
-
 }
-
-/* Notizen
-Pascalsches Dreieck
-
-Dabei kann die Variable n als Zeilenindex und k als Spaltenindex interpretiert werden, 
-wobei die Zählung mit Null beginnt (also erste Zeile n=0, erste Spalte k=0). 
-Beginnt man an den Rändern mit Einträgen mit dem Wert 1, so ergeben sich dadurch genau 
-die Binomialkoeffizienten.
-
-Die Zeilen
-Die Summe der Einträge einer Zeile wird als Zeilensumme bezeichnet. Von oben nach unten 
-verdoppeln sich die Zeilensummen von Zeile zu Zeile. Dies rührt vom Bildungsgesetz des 
-pascalschen Dreiecks her. Jeder Eintrag einer Zeile wird in der folgenden Zeile zur 
-Berechnung zweier Einträge verwendet. Hierbei muss man das Bildungsgesetz durch das 
-Hinzufügen von gedachten Nullen links und rechts von jeder Zeile verallgemeinern, so 
-dass auch die äußeren Einsen jeder Zeile durch die Addition der darüberliegenden Einträge 
-generiert werden. Da die Zeilensumme der ersten Zeile gleich eins ist, ist die Zeilensumme 
-der n-ten Zeile gleich 2^{n-1}. */

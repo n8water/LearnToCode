@@ -3,53 +3,53 @@ using System.Collections.Generic;
 
 public static class AllYourBase
 {
-    private static int inputValue;
+    static int decimalInput = 0;
     public static int[] Rebase(int inputBase, int[] inputDigits, int outputBase)
     {
-        CalculateInputValue(inputBase, inputDigits);
-        ChangeBase(outputBase, inputValue);
-        throw new NotImplementedException("Please implement this function");
+        if ((inputBase <= 1) || (outputBase <= 1))
+            throw new ArgumentException();
+
+        InputToDecimal(inputBase, inputDigits);
+          
+
+        return ConvertInput(decimalInput, outputBase);
     }
 
-    private static void ChangeBase(int outputBase, int inputValue)
+    //private methods
+    private static void InputToDecimal(int inputBase, int[] inputDigits)
     {
-        int input = inputValue;
-        int temp = 0;
-        int counter = 0;
-        int[] outputValues = new int[]();
-        Dictionary<int, int> values = new Dictionary<int, int>();
-
-        while(input > 0)
+        int input = 0;
+        int counter = inputDigits.Length;
+        
+        foreach(int i in inputDigits)
         {
-            while(temp < input)
+            if (i >= 0 && i < inputBase)
             {
-                temp = (int)Math.Pow((double)outputBase, (double)counter);
-                counter++;
+                input += (i * (int)Math.Pow((double)inputBase, (double)counter - 1));
+                counter--;
             }
-
-            values.Add(counter, 1);
-            input -= temp;
-            counter = 0;
-            temp = 0;
+            else
+                throw new ArgumentException();
         }
 
-
-
-
-
-
+        decimalInput = input;
     }
 
-    private static void CalculateInputValue(int inputBase, int[] inputDigits)
+    private static int[] ConvertInput(int decimalInput, int outputBase)
     {
-        int numberOfInputDigits = inputDigits.Length - 1;
-        inputValue = 0;
+        int temp = decimalInput;
+        var output = new List<int>();
 
-        foreach (var digit in inputDigits)
+        while(temp > 0)
         {
-            inputValue += digit * (int)Math.Pow((double)inputBase, (double)numberOfInputDigits);
-            numberOfInputDigits--;
+            output.Add(temp % outputBase);
+            temp = temp / outputBase;
         }
-    }
 
+        if (output.Count == 0)
+            return new int[1] { 0 };
+
+        output.Reverse();
+        return output.ToArray();
+    }
 }

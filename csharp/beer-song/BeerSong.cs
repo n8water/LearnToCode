@@ -1,52 +1,100 @@
 ﻿using System;
-using System.Text;
 
+/*Inspired approach*/
 public static class BeerSong
 {
+    static string result;
     public static string Recite(int startBottles, int takeDown)
     {
-        int bottlesOnTheWall = startBottles;
-        int counter = 0;
-        StringBuilder sb = new StringBuilder();
+        result = string.Empty;
+        int counter = takeDown;
+        int bottles = startBottles;
 
-        string vers = string.Format("{0} bottles of beer on the wall, {0} bottles of beer.\n" +
-            "Take one down and pass it around, {1} bottles of beer on the wall.", bottlesOnTheWall, bottlesOnTheWall-1 );
-
-        string twoBottles = string.Format("{0} bottles of beer on the wall, {0} bottles of beer.\n" +
-            "Take one down and pass it around, 1 bottle of beer on the wall.", bottlesOnTheWall);
-
-        string lastBottle = string.Format("{0} bottle of beer on the wall, {0} bottle of beer.\n" +
-            "Take it down and pass it around, no more bottles of beer on the wall.", bottlesOnTheWall, startBottles );
-
-        string lastLine = "No more bottles of beer on the wall, no more bottles of beer.\n" +
-            "Go to the store and buy some more, 99 bottles of beer on the wall.";
-
-        while(counter < takeDown)
+        while(counter > 0)
         {
-            if (bottlesOnTheWall == 0)
+            if (result != string.Empty)
+                result += "\n\n";
+
+            switch (bottles)
             {
-                sb.Append(lastLine);
-                break;
+                case 2: 
+                    result += "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.";
+                    break;
+                case 1:
+                    result += "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.";
+                    break;
+                case 0:
+                    result += "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.";
+                    break;
+                default:
+                    result += $"{bottles} bottles of beer on the wall, {bottles} bottles of beer.\nTake one down and pass it around, {bottles - 1} bottles of beer on the wall.";
+                    break;
             }
-            else if (bottlesOnTheWall == 1)
-            {
-                sb.Append(lastBottle);
-                bottlesOnTheWall -= 1;
-            }
-            else if(bottlesOnTheWall == 2)
-            {
-                sb.Append(twoBottles);
-                sb.Append("\n\n");
-                bottlesOnTheWall -= 1;
-            }
-            else
-            {
-                sb.Append(vers);
-                bottlesOnTheWall -= 1;
-            }
-            counter++;
+
+            bottles--;
+            counter--;
         }
-               
-        return sb.ToString();
+
+        return result;
     }
 }
+
+/*My approach*/
+//public static class BeerSong
+//{
+//    static string result;
+//    public static string Recite(int startBottles, int takeDown)
+//    {
+//        #region Variables
+//        result = string.Empty;
+
+//        int bottles = startBottles;
+//        int counter = takeDown;
+//        #endregion
+
+//        while (counter > 0)
+//        {
+//            AddLine(bottles);
+//            bottles--;
+//            counter--;
+//        }
+
+//        return result;
+//    }
+
+//    private static void AddLine(int input)
+//    {
+
+//        string vers = $"{input} bottles of beer on the wall, {input} bottles of beer.\n" +
+//                $"Take one down and pass it around, {input - 1} bottles of beer on the wall.";
+
+//        string twoBottles = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
+//            $"Take one down and pass it around, 1 bottle of beer on the wall.";
+
+//        string oneBottle = "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+//            "Take it down and pass it around, no more bottles of beer on the wall.";
+
+//        string noBottle = "No more bottles of beer on the wall, no more bottles of beer.\n" +
+//            "Go to the store and buy some more, 99 bottles of beer on the wall.";
+
+//        if (result != string.Empty)
+//            result += "\n\n";
+               
+//        if (input > 2)
+//        {            
+//            result += vers;
+//        }
+//        else if(input == 2)
+//        {
+//            result += twoBottles;
+//        }
+//        else if(input == 1)
+//        {
+//            result += oneBottle;
+//        }
+//        else if(input == 0)
+//        {
+//            result += noBottle;
+//        }
+//    }
+//}
