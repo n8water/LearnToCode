@@ -24,5 +24,11 @@ namespace Counter
             ++count;
             CounterLabel.Text = count.ToString();
         }
+
+        private void ResetCounterClicked(object sender, EventArgs e)
+        {
+            count = 0;
+            CounterLabel.Text = count.ToString();
+        }
     }
 }
