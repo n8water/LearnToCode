@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Counter.MainPage">
-    <StackLayout VerticalOptions="Center">
+    <StackLayout VerticalOptions="Center">        
         <Label Text="0"
                x:Name="CounterLabel"
                TextColor="Aquamarine"
