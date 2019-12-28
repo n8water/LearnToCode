@@ -17,32 +17,39 @@ namespace CodeWarsDev
     #region Current Kata
     public class Kata
     {
-        public static int Gimme(double[] inputArray)
+        public static int MaxMultiply(int divisor, int bound)
         {
-            var input = inputArray.ToList<double>();
-
-            var temp = inputArray.ToList<double>().Sort();
+            //n is divisible by divisor
+            //n is less than or equal to bound
+            //n is greater than 0.
+            int n = bound;
             
+            while (n % divisor != 0)
+                n--;
 
-            return 0;
-
-
-
-
-            
+            return n; ;
         }
     }
     #endregion
 
     #region Tests
     [TestFixture]
-    public class Test
+    public class Tests
+
     {
-        [Test]
-        public void SampleTests()
+        [TestCase(2, 7, 6)]
+        [TestCase(3, 10, 9)]
+        [TestCase(7, 17, 14)]
+        public void SmallNumbers(int divisor, int bound, int ex)
         {
-            Assert.AreEqual(0, Kata.Gimme(new double[] { 2, 3, 1 }));
-            Assert.AreEqual(1, Kata.Gimme(new double[] { 5, 10, 14 }));
+            Assert.That(Kata.MaxMultiply(divisor, bound), Is.EqualTo(ex));
+        }
+        [TestCase(10, 50, 50)]
+        [TestCase(37, 200, 185)]
+        [TestCase(7, 100, 98)]
+        public void LargeNumbers(int divisor, int bound, int ex)
+        {
+            Assert.That(Kata.MaxMultiply(divisor, bound), Is.EqualTo(ex));
         }
     }
     #endregion
