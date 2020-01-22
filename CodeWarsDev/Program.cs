@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace CodeWarsDev
 {
@@ -8,42 +9,40 @@ namespace CodeWarsDev
     {
         static void Main(string[] args)
         {
+            HighestLowest.HighAndLow("1 2 3");
 
-
+            Console.ReadKey();
         }       
        
     }
 
-    #region Current Kata
-    public class Kata
+    public static class HighestLowest
     {
-        public static int Gimme(double[] inputArray)
+        public static string HighAndLow(string numbers)
         {
-            var input = inputArray.ToList<double>();
+            List<int> inputNumbers = new List<int>();
 
-            var temp = inputArray.ToList<double>().Sort();
-            
+            var input = numbers.Split(' ');
 
-            return 0;
+            foreach(var x in input)
+            {
+                if(int.TryParse(x, out int i))
+                {
+                    inputNumbers.Add(i);
+                }
+            }
 
-
-
-
-            
+            return $"{inputNumbers.Max()} {inputNumbers.Min()}";
         }
     }
-    #endregion
 
-    #region Tests
     [TestFixture]
-    public class Test
+    public class Tests
     {
         [Test]
-        public void SampleTests()
+        public void Test1()
         {
-            Assert.AreEqual(0, Kata.Gimme(new double[] { 2, 3, 1 }));
-            Assert.AreEqual(1, Kata.Gimme(new double[] { 5, 10, 14 }));
+            Assert.AreEqual("42 -9", HighestLowest.HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
         }
     }
-    #endregion
 }
