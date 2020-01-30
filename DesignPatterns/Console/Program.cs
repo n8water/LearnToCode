@@ -55,6 +55,11 @@ namespace Console
             // if you do, you'll have to cast to the required object
             ((Dog)doggy).DigHole();
 
+            // access the variable from outside main
+            // can't use non static variables or methods in a static function/method
+            // System.Console.WriteLine(justANum);
+            // SayHello();
+            
             // you cannot call a private method
             // fido.BePrivate();
 
@@ -78,7 +83,11 @@ namespace Console
             System.Console.WriteLine("Animal says: " + randAnimal.Sound);
         }
 
-        public class Giraffe : Animal { }
+        // Non static method to demonstrate you can't call it from inside a static method
+        public void SayHello()
+        {
+            System.Console.WriteLine("Hello");
+        }
 
         public static void changeObjectName(Dog fido)
         {

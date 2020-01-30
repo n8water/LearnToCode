@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Reflection;
 using System.Resources;
+using Console.classes;
 
-public abstract class Animal
+public class Animal : Creature
 {
     #region Fields
 
-    private string _name;
+    // commented lines are now located in Creature.cs
+    //private string _name;
 	private double _height;
-	private int _weight;
+	//private int _weight;
 	private string _favFood;
 	private double _speed;
-	private string _sound;
+	//private string _sound;
 
     public string Name
     {
@@ -68,12 +70,12 @@ public abstract class Animal
 
     #region Methods
 
-    public void SetName(string newName)
+    public override void SetName(string newName)
     {
         Name = newName;
     }
 
-    public void SetWeight(int newWeight)
+    public override void SetWeight(int newWeight)
     {
         Weight = newWeight;
     }
