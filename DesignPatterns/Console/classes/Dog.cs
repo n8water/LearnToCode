@@ -21,20 +21,20 @@ namespace Console.classes
         /*This private method can only be accessed through using other
         methods in the class */
 
-        private void bePrivate()
+        private void BePrivate()
         {
             System.Console.WriteLine("In a private method");
         }
 
-        public void accessPrivate()
+        public void AccessPrivate()
         {
-            bePrivate();
+            BePrivate();
         }
 
         //The constructor initializes all objects
         public Dog()
         {
-
+            SetSound("Bark");
         }
 
     }

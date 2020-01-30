@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Reflection;
+using System.Resources;
 
-public class Animal
+public abstract class Animal
 {
     #region Fields
 
@@ -66,16 +68,25 @@ public class Animal
 
     #region Methods
 
-    public void setName(string newName)
+    public void SetName(string newName)
     {
         Name = newName;
+    }
+
+    public void SetWeight(int newWeight)
+    {
+        Weight = newWeight;
+    }
+    public void SetSound(string newSound)
+    {
+        Sound = newSound;
     }
 
     /*a private method can only be accessed by other public methods
     that are in the same class */
     private void bePrivate()
-    {
-        System.Console.WriteLine("I'm a private method");
+    {        
+        System.Console.WriteLine("Weight must be bigger than 0");
     }
 
 
