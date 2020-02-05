@@ -7,9 +7,10 @@ namespace CodeWarsDev
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            
+            Assert.AreEqual("emocleW", Kata.SpinWords("Welcome"));
+
         }       
        
     }
@@ -18,7 +19,26 @@ namespace CodeWarsDev
     {
         public static string SpinWords(string sentence)
         {
+            var input = sentence.Split();
+            string result = string.Empty;
 
+            foreach(string s in input)
+            {
+                if (s.Length >= 5)
+                {
+                    var temp = s.ToCharArray();
+                    Console.WriteLine($"temp.ToString equals {temp.ToString()}");
+                    var tempResult = temp.Reverse().ToString();
+                    Console.WriteLine(tempResult);
+                    result += temp.ToString();
+                }
+                else
+                {
+                    result += s;
+                }
+            }
+
+            return result;
         }
     }
 
