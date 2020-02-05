@@ -9,72 +9,57 @@ namespace CodeWarsDev
     {
         static void Main(string[] args)
         {
-            HighestLowest.HighAndLow("1 2 3");
-
-            Console.ReadKey();
+            
         }       
        
     }
 
-    public static class HighestLowest
+    public class Kata
     {
-<<<<<<< HEAD
-        public static string HighAndLow(string numbers)
+        public static string SpinWords(string sentence)
         {
-            List<int> inputNumbers = new List<int>();
 
-            var input = numbers.Split(' ');
-
-            foreach(var x in input)
-            {
-                if(int.TryParse(x, out int i))
-                {
-                    inputNumbers.Add(i);
-                }
-            }
-
-            return $"{inputNumbers.Max()} {inputNumbers.Min()}";
-=======
-        public static int MaxMultiply(int divisor, int bound)
-        {
-            //n is divisible by divisor
-            //n is less than or equal to bound
-            //n is greater than 0.
-            int n = bound;
-            
-            while (n % divisor != 0)
-                n--;
-
-            return n; ;
->>>>>>> bcf207d51837992c50a7effeb12ee4fadf07e760
         }
     }
 
     [TestFixture]
     public class Tests
-<<<<<<< HEAD
     {
         [Test]
-        public void Test1()
+        public static void Test1()
         {
-            Assert.AreEqual("42 -9", HighestLowest.HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
-=======
-
-    {
-        [TestCase(2, 7, 6)]
-        [TestCase(3, 10, 9)]
-        [TestCase(7, 17, 14)]
-        public void SmallNumbers(int divisor, int bound, int ex)
-        {
-            Assert.That(Kata.MaxMultiply(divisor, bound), Is.EqualTo(ex));
+            Assert.AreEqual("emocleW", Kata.SpinWords("Welcome"));
         }
-        [TestCase(10, 50, 50)]
-        [TestCase(37, 200, 185)]
-        [TestCase(7, 100, 98)]
-        public void LargeNumbers(int divisor, int bound, int ex)
+
+        [Test]
+        public static void Test2()
         {
-            Assert.That(Kata.MaxMultiply(divisor, bound), Is.EqualTo(ex));
->>>>>>> bcf207d51837992c50a7effeb12ee4fadf07e760
+            Assert.AreEqual("Hey wollef sroirraw", Kata.SpinWords("Hey fellow warriors"));
+        }
+
+        [Test]
+        public static void Test3()
+        {
+            Assert.AreEqual("This is a test", Kata.SpinWords("This is a test"));
+        }
+
+        [Test]
+        public static void Test4()
+        {
+            Assert.AreEqual("This is rehtona test", Kata.SpinWords("This is another test"));
+        }
+
+        [Test]
+        public static void Test5()
+        {
+            Assert.AreEqual("You are tsomla to the last test", Kata.SpinWords("You are almost to the last test"));
+        }
+
+        [Test]
+        public static void Test6()
+        {
+            Assert.AreEqual("Just gniddik ereht is llits one more", Kata.SpinWords("Just kidding there is still one more"));
         }
     }
+
 }
