@@ -26,11 +26,9 @@ namespace CodeWarsDev
             {
                 if (s.Length >= 5)
                 {
-                    var temp = s.ToCharArray();
-                    Console.WriteLine($"temp.ToString equals {temp.ToString()}");
-                    var tempResult = temp.Reverse().ToString();
-                    Console.WriteLine(tempResult);
-                    result += temp.ToString();
+                    // wenn länger gleich 5 dann s umkehren
+
+
                 }
                 else
                 {
