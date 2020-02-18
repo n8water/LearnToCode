@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <!-- Witdh="auto" passt sich in der Größe dem Inhalt an-->
+            <!-- Witdh="auto" passt sich in der Breite dem Inhalt an-->
             <ColumnDefinition Width="auto"/>            
             <ColumnDefinition Width="auto"/>            
             <ColumnDefinition Width="auto"/>
@@ -33,7 +33,7 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="36" Grid.ColumnSpan="3"
                    Margin="0,0,0,10"
-                   Text="WPF Super Demo"/>
+                   Text="WPF Super Demo!"/>
         
         <TextBlock Grid.Column="1" Grid.Row="2" FontWeight="SemiBold"
                    Text="First Name" FontFamily="Segoe UI" />
@@ -42,6 +42,6 @@
 
         <Button x:Name="submitButton" Content="Run Me" 
                 Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
-                Margin="10" Click="submitButton_Click"/>
+                Margin="10" Click="submitButton_Click" />
     </Grid>
 </Window>
