@@ -40,8 +40,21 @@
         <TextBox x:Name="firstNameText" Grid.Column="2" Grid.Row="2" 
                  Width="150" />
 
+        <ComboBox x:Name="myComboBox" Grid.Column="1" Grid.Row="3" 
+                  Grid.ColumnSpan="2" Margin="10">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding FullName}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
         <Button x:Name="submitButton" Content="Run Me" 
-                Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
+                Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"
                 Margin="10" Click="submitButton_Click" />
+
+        <Image Grid.Column="4" Grid.Row="1" Grid.RowSpan="6"
+               Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Hoodie_short_brown.jpg" />
+
     </Grid>
 </Window>

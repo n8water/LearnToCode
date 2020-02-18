@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFDemo.Classes;
 
 namespace WPFDemo
 {
@@ -20,9 +21,17 @@ namespace WPFDemo
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Person> people = new List<Person>();
         public MainWindow()
         {
             InitializeComponent();
+
+            people.Add(new Person { FirstName = "Tim", LastName = "Corey" });
+            people.Add(new Person { FirstName = "Sabrina", LastName = "Felder" });
+            people.Add(new Person { FirstName = "Dominik", LastName = "Weber" });
+            people.Add(new Person { FirstName = "Chrissi", LastName = "Michaelsen" });
+
+            myComboBox.ItemsSource = people;
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
