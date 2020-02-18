@@ -4,9 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDemo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
+        Title="WPF Demo" Height="350" Width="525">
+    <!-- Title Height and Width define the windows size at startup
+        FontSize setzt die Default Größe für diese Ansicht, bis einem Objekt ein definitiver Wert zugewiesen wird-->
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <!-- Witdh="auto" passt sich in der Größe dem Inhalt an-->
+            <ColumnDefinition Width="auto"/>            
+            <ColumnDefinition Width="auto"/>            
+            <ColumnDefinition Width="auto"/>
+            <!-- Witdh="*" nimmt den verfügbaren Platz in der Breite an-->
+            <ColumnDefinition Width="*"/>
+            
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>            
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="36" Grid.ColumnSpan="3"
+                   Margin="0,0,0,10"
+                   Text="WPF Super Demo"/>
         
+        <TextBlock Grid.Column="1" Grid.Row="2" FontWeight="SemiBold"
+                   Text="First Name" FontFamily="Segoe UI" />
+        <TextBox x:Name="firstNameText" Grid.Column="2" Grid.Row="2" 
+                 Width="150" />
+
+        <Button x:Name="submitButton" Content="Run Me" 
+                Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
+                Margin="10" Click="submitButton_Click"/>
     </Grid>
 </Window>
