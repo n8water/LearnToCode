@@ -44,7 +44,12 @@
                   Grid.ColumnSpan="2" Margin="10">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding FullName}" />
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\MangaFille.jpg" Height="20" Width="20"/>
+                        <TextBlock Text="{Binding FirstName}" />
+                        <TextBlock Text=" " />                        
+                        <TextBlock Text="{Binding LastName}" />
+                    </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -53,8 +58,32 @@
                 Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"
                 Margin="10" Click="submitButton_Click" />
 
-        <Image Grid.Column="4" Grid.Row="1" Grid.RowSpan="6"
-               Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Hoodie_short_brown.jpg" />
+        <!--<Image Grid.Column="4" Grid.Row="1" Grid.RowSpan="6" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Hoodie_short_brown.jpg" /> -->
+        <!--<MediaElement Grid.Column="4" Grid.Row="1" Grid.RowSpan="6" Source="D:\Programmieren\turtleintro.mov" />-->
+
+        <!--<WrapPanel Orientation="Horizontal" Grid.Column="4" Grid.Row="1" Grid.RowSpan="6">
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Hoodie_short_brown.jpg" />
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Internet.png" />
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\MangaFille.jpg" />
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\run-icon.png" />
+        </WrapPanel>-->
+
+        <!--<StackPanel Orientation="Vertical" Grid.Column="4" Grid.Row="1" Grid.RowSpan="6">
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Hoodie_short_brown.jpg" />
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Internet.png" />
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\MangaFille.jpg" />
+            <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\run-icon.png" />
+        </StackPanel>-->
+
+        <ScrollViewer Grid.Column="4" Grid.Row="1" Grid.RowSpan="6">
+            <StackPanel Orientation="Horizontal" >
+                <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Hoodie_short_brown.jpg" />
+                <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\Internet.png" />
+                <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\MangaFille.jpg" />
+                <Image MaxHeight="200" MaxWidth="200" Source="D:\GitHub\LearnToCode\WPFDemo\WPFDemo\Resources\run-icon.png" />
+            </StackPanel>
+        </ScrollViewer>
+
 
     </Grid>
 </Window>
