@@ -24,7 +24,15 @@ public static class ProteinTranslation
         Proteins.Add("UAG", "STOP");
         Proteins.Add("UGA", "STOP");
 
+        Console.WriteLine("input strand: " + strand);
 
+        strand.Substring(0, 3);
+
+        Console.WriteLine(strand.Substring(0,3));
+
+        strand = strand.Substring(3);
+
+        Console.WriteLine("strand after Substring(3)" + strand);
 
         return new string[3];
     }
