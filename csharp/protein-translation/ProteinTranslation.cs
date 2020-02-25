@@ -5,7 +5,11 @@ public static class ProteinTranslation
 {
     public static string[] Proteins(string strand)
     {
+        // declare and initialize variables
+        var result = new List<string>();
         Dictionary<string, string> Proteins = new Dictionary<string, string>();
+
+        // Fill dictionary
         Proteins.Add("AUG", "Methionine");
         Proteins.Add("UUU", "Phenylalanine");
         Proteins.Add("UUC", "Phenylalanine");
@@ -24,16 +28,19 @@ public static class ProteinTranslation
         Proteins.Add("UAG", "STOP");
         Proteins.Add("UGA", "STOP");
 
-        Console.WriteLine("input strand: " + strand);
+        // check substrings
+        while(strand.Length >= 3)
+        {
+            string temp = strand.Substring(0, 3);
+            if (Proteins[temp] != "STOP")
+                result.Add(Proteins[temp]);
+            else
+                break;
+            strand = strand.Substring(3);
 
-        strand.Substring(0, 3);
+        }
 
-        Console.WriteLine(strand.Substring(0,3));
-
-        strand = strand.Substring(3);
-
-        Console.WriteLine("strand after Substring(3)" + strand);
-
-        return new string[3];
+        // return result as array
+        return result.ToArray();
     }
 }
