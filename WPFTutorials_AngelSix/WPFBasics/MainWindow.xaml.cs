@@ -24,5 +24,44 @@ namespace WPFBasics
         {
             InitializeComponent();
         }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"The description is: {DescriptionText.Text}");
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            WeldCheckbox.IsChecked = AssemblyCheckbox.IsChecked = PlasmaCheckbox.IsChecked = LaserCheckbox.IsChecked = 
+                PurchaseCheckbox.IsChecked = LatheCheckbox.IsChecked = DrillCheckbox.IsChecked = FoldCheckbox.IsChecked =
+                RollCheckbox.IsChecked = SawCheckbox.IsChecked = false;
+        }
+
+        private void Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            LengthText.Text += ((CheckBox)sender).Content +", ";
+        }
+
+        private void Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (sender != null)
+            {
+                string content = (string)((CheckBox)sender).Content;
+
+                if ((bool)((CheckBox)sender).IsChecked)
+                {
+                    LengthText.Text += content + " ";
+                }
+                else
+                {
+                    LengthText.Text.Replace(content, string.Empty);
+
+                }
+
+            }
+
+            else
+                throw new ArgumentException();
+        }
     }
 }
