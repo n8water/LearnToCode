@@ -11,7 +11,7 @@ public class SieveTest
         Assert.Throws<ArgumentOutOfRangeException>(() => Sieve.Primes(1));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Find_first_prime()
     {
         var expected = new[] { 2 };
