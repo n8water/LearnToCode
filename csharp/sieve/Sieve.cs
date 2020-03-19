@@ -6,25 +6,53 @@ public static class Sieve
 {
     public static int[] Primes(int limit)
     {
-        //int[] result = new int[0];
-        IEnumerable<int> myRange = Enumerable.Range(2, limit - 1);
-        IEnumerable<int> results = new List<int>();
-
-        for(int i = 2; i <= limit; i++)
-        {
-
-            results.Append(i);
-            myRange.
-        }
+        //Variables
+        var myArray = new int[limit];
 
 
+        //Work
         if(limit < 2)
             throw new ArgumentOutOfRangeException();
 
-       var result = myRange.Where(x => x).Select(x);
 
 
+        //for (int i = 0; i <= limit; i++)
+        //{
+        //    if (i < 2)
+        //    {
+        //        myArray[i] = 1;
+        //    }
+        //    else if (myArray[i] != 1)
+        //    {
+        //        SetValue(i);
+        //    }
 
-        throw new NotImplementedException("You need to implement this function.");
+        //    return GenerateResult(myArray);
+        //}
+
+        //throw new NotImplementedException("You need to implement this function.");
+
+        //void SetValue(int i)
+        //{
+        //    int n = 2;
+
+        //    while(i * n <= limit)
+        //    {
+        //        myArray[i * n] = 1;
+        //        n++;
+        //    }
+        //}
+
+        //int[] GenerateResult(int[] input)
+        //{
+        //    if(input is object)
+        //    {
+        //        var searchList = input.ToList<int>();
+
+        //        var results = searchList.Where(x => x == 0).Select(searchList.);
+
+        //    }
+
+        throw new ArgumentNullException();
     }
 }
