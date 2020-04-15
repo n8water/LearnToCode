@@ -10,7 +10,7 @@ namespace CodeWarsDev
         static void Main()
         {
             Assert.AreEqual("emocleW", Kata.SpinWords("Welcome"));
-
+            
         }       
        
     }
