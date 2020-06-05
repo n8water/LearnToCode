@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace CodeWarsDev
 {
@@ -9,7 +10,8 @@ namespace CodeWarsDev
     {
         static void Main()
         {
-            Assert.AreEqual("emocleW", Kata.SpinWords("Welcome"));
+            var test = Kata.AbbrevName("Sabrina felder");
+            Console.WriteLine(test);
             
         }       
        
@@ -17,67 +19,26 @@ namespace CodeWarsDev
 
     public class Kata
     {
-        public static string SpinWords(string sentence)
+        public static string AbbrevName(string name)
         {
-            var input = sentence.Split();
+            var names = name.Split();
             string result = string.Empty;
 
-            foreach(string s in input)
+            
+
+            for (int i = 0; i < names.Length; i++)
             {
-                if (s.Length >= 5)
-                {
-                    // wenn länger gleich 5 dann s umkehren
+                result += names[i].Substring(0, 1);
 
-
-                }
-                else
+                if (result.Length == 1)
                 {
-                    result += s;
+                    result += ".";
                 }
             }
 
-            return result;
+            return result.ToUpper();
         }
     }
 
-    [TestFixture]
-    public class Tests
-    {
-        [Test]
-        public static void Test1()
-        {
-            Assert.AreEqual("emocleW", Kata.SpinWords("Welcome"));
-        }
-
-        [Test]
-        public static void Test2()
-        {
-            Assert.AreEqual("Hey wollef sroirraw", Kata.SpinWords("Hey fellow warriors"));
-        }
-
-        [Test]
-        public static void Test3()
-        {
-            Assert.AreEqual("This is a test", Kata.SpinWords("This is a test"));
-        }
-
-        [Test]
-        public static void Test4()
-        {
-            Assert.AreEqual("This is rehtona test", Kata.SpinWords("This is another test"));
-        }
-
-        [Test]
-        public static void Test5()
-        {
-            Assert.AreEqual("You are tsomla to the last test", Kata.SpinWords("You are almost to the last test"));
-        }
-
-        [Test]
-        public static void Test6()
-        {
-            Assert.AreEqual("Just gniddik ereht is llits one more", Kata.SpinWords("Just kidding there is still one more"));
-        }
-    }
 
 }
