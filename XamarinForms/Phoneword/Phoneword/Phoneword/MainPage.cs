@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Phoneword
@@ -100,7 +101,23 @@ namespace Phoneword
                 "No"
                 ))
             {
-                // TODO: dial the phone
+                try
+                {
+                    PhoneDialer.Open(translatedNumber);
+                }
+                catch (ArgumentNullException)
+                {
+                    await DisplayAlert("Unable to dial", "Phone number was not valid.", "OK");
+                }
+                catch (FeatureNotSupportedException)
+                {
+                    await DisplayAlert("Unable to dial", "Phone dialing not supported.", "OK");
+                }
+                catch (Exception)
+                {
+                    // Other error has occured
+                    await DisplayAlert("Unable to dial", "Phone dialing failed", "OK");
+                }
                 
             }
 
