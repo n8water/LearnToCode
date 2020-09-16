@@ -9,9 +9,10 @@ namespace Phoneword
     public class MainPage : ContentPage
     {        
         // class fields
-        Entry input;
-        Button buttonTranslate;
-        Button buttonCall;
+        Entry phoneNumberText;
+        Button translateButton;
+        Button callButton;
+        string translatedNumber;
 
         public MainPage()
         {
@@ -35,7 +36,7 @@ namespace Phoneword
             //Entry input = new Entry();
             //input.Text = "1-855-XAMARIN";
 
-            panel.Children.Add(new Entry
+            panel.Children.Add(phoneNumberText = new Entry
             {
                 Text = "1-855-XAMARIN"
             });
@@ -43,17 +44,16 @@ namespace Phoneword
             //Button buttonTranslate = new Button();
             //buttonTranslate.Text = "Translate";
 
-            panel.Children.Add(new Button
+            panel.Children.Add(translateButton = new Button
             {
-                Text = "Translate",
-                
+                Text = "Translate",                
             });
 
             //Button buttonCall = new Button();
             //buttonCall.Text = "Call";
             //buttonCall.IsEnabled = false;
 
-            panel.Children.Add(new Button
+            panel.Children.Add(callButton = new Button
             {
                 Text = "Call",
                 IsEnabled = false,
@@ -65,15 +65,45 @@ namespace Phoneword
             //panel.Children.Add(buttonTranslate);
             //panel.Children.Add(buttonCall);
 
+            translateButton.Clicked += OnTranslate;
+            callButton.Clicked += OnCall;
             this.Content = panel;
 
             
 
         }
 
-        public void OnTranslate(object sender, EventArgs e)
+        private void OnTranslate(object sender, EventArgs e)
         {
-            // something to be done
+            string enteredNumber = phoneNumberText.Text;
+            translatedNumber = PhonewordTranslator.ToNumber(enteredNumber);
+
+            if(!string.IsNullOrEmpty(translatedNumber))
+            {
+                callButton.IsEnabled = true;
+                callButton.Text = "Call " + translatedNumber;
+            }
+            else
+            {
+                callButton.IsEnabled = false;
+                callButton.Text = "Call";
+            }
+
+        }
+
+        private async void OnCall(object sender, EventArgs e)
+        {
+            if(await this.DisplayAlert(
+                "Dial a Number",
+                "Would you like to call " + translatedNumber + "?",
+                "Yes",
+                "No"
+                ))
+            {
+                // TODO: dial the phone
+                
+            }
+
         }
 
     }
