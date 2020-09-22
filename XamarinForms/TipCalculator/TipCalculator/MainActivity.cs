@@ -21,6 +21,8 @@ namespace TipCalculator
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
+            var digitsInputEditText = FindViewById<EditText>(Resource.Id.digitsInput);
+
         }
 	}
 }
