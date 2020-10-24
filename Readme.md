@@ -1,5 +1,7 @@
-Readme to my learning repository.
+LearnToCode
 
-I am trying to create a repository to document my learning for my future me.
+the name is quite selfexplaining.
 
-Goal is to get used to github while learning C# and Python and ...
+I am building this repository to document my learning for my future me.
+
+Goal is to get used to github and document for me what I already learned.
