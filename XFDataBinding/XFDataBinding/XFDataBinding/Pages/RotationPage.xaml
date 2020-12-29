@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XFDataBinding.Pages.RotationPage">
+  <ContentPage.Content>
+    <StackLayout>
+      <Label Text="Advanced Data Binding Demo" 
+                   FontAttributes="Bold"                   
+                   HorizontalOptions="Center" />
+      <Slider x:Name="slider" Maximum="360"
+              MinimumTrackColor="CadetBlue"
+              MaximumTrackColor="CornflowerBlue"
+              ThumbColor="Aqua"/>
+      <Image Source="Lechweg.jpg" BindingContext="{x:Reference slider}"
+             Rotation="{Binding Value}" VerticalOptions="CenterAndExpand"/>
+      <Label BindingContext="{x:Reference slider}" 
+             HorizontalOptions="Center"
+             Text="{Binding Value, StringFormat='Rotation angle: {0:F0} degrees'}" />
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFDataBinding.Pages;
 
 namespace XFDataBinding
 {
@@ -10,7 +11,7 @@ namespace XFDataBinding
     {
       InitializeComponent();
 
-      MainPage = new MainPage();
+      MainPage = new ConverterPage();
     }
 
     protected override void OnStart()

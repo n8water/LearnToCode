@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace XFDataBinding
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace XFDataBinding.Pages
 {
-  public partial class MainPage : ContentPage
+  [XamlCompilation(XamlCompilationOptions.Compile)]
+  public partial class ConverterPage : ContentPage
   {
-    public MainPage()
+    public ConverterPage()
     {
       InitializeComponent();
     }

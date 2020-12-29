@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFDataBinding.Converters"
+             x:Class="XFDataBinding.Pages.ConverterPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:IntToBooleanConverter x:Key="intToBoolConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="0,20,0,0">
+      <Label Text="Advanced Data Binding Demo"
+                 FontAttributes="Bold"
+                 HorizontalOptions="Center" />
+      <Label Text="Enter your response (minimum 10 characters):" />
+      <Editor x:Name="editor" HeightRequest="100" />
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Number of characters:" />
+        <Label Text="{Binding Source={x:Reference editor}, Path=Text.Length}"/>
+      </StackLayout>
+      <Button Text="Send" HorizontalOptions="Center"
+                  IsEnabled="{Binding Source={x:Reference editor}, Path=Text.Length, Converter={StaticResource intToBoolConverter}, ConverterParameter=10}" />
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
